@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Challenge</h1>
+    <br/>
+    <p>Please upload a csv file to feed to the database.</p>
+    <form method="post" action="/processData">
+        <input name="inputFile" type="file" accept=".csv" />
+        <br/>
+        <button type="submit">Process File</button>
+    </form>
+  </body>
+</html>
