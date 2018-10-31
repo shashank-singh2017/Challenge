@@ -4,10 +4,10 @@ const csvdata = require('csvdata');
 var mysql = require('mysql');
 
 var conn  = mysql.createConnection({
-    host            : 'amz.cp7r60n8f0a7.us-west-1.rds.amazonaws.com',
-    user            : 'root',
-    password        : 'August_123',
-    database        : 'challenge'
+    host            : 'sql3.freemysqlhosting.net',
+    user            : 'sql3263617',
+    password        : '7SUZbrIA5K',
+    database        : 'sql3263617'
 });
 
 var router = express.Router();
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/revenue', function(req,res) {
     var sql = "SELECT transaction_year as YEAR, SUM(amount) as Revenue\n" +
-        "FROM challenge.user_transactions\n" +
+        "FROM sql3263617.user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
@@ -35,7 +35,7 @@ router.get('/revenue', function(req,res) {
 
 router.get('/activeusers', function(req, res) {
     var sql = "SELECT distinct transaction_year as Year, count(user_id) as activeusers\n" +
-        "FROM challenge.user_transactions\n" +
+        "FROM sql3263617.user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
@@ -47,7 +47,7 @@ router.get('/activeusers', function(req, res) {
 });
 
 router.get('/newusercount', function(req, res) {
-    var sql = "SELECT distinct joining_year as Year, count(user_id) as newusers FROM challenge.user_transactions GROUP BY joining_year";
+    var sql = "SELECT distinct joining_year as Year, count(user_id) as newusers FROM sql3263617.user_transactions GROUP BY joining_year";
 
     conn.query(sql, function (err, result) {
         if(err) throw err;
