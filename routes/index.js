@@ -4,10 +4,10 @@ const csvdata = require('csvdata');
 var mysql = require('mysql');
 
 var conn  = mysql.createConnection({
-    host            : 'sql3.freemysqlhosting.net',
-    user            : 'sql3263617',
-    password        : '7SUZbrIA5K',
-    database        : 'sql3263617'
+    host            : 'amz.cp7r60n8f0a7.us-west-1.rds.amazonaws.com',
+    user            : 'root',
+    password        : 'August_123',
+    database        : 'challenge'
 });
 
 var router = express.Router();
