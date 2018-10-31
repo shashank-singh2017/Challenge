@@ -4,10 +4,10 @@ const csvdata = require('csvdata');
 var mysql = require('mysql');
 
 var conn  = mysql.createConnection({
-    host            : 'sql3.freemysqlhosting.net',
-    user            : 'sql3263617',
-    password        : '7SUZbrIA5K',
-    database        : 'sql3263617'
+    host            : 'us-cdbr-iron-east-01.cleardb.net',
+    user            : 'becd00e6998b8b',
+    password        : '735f487f',
+    database        : 'heroku_3d47a1071aacd4a'
 });
 
 var router = express.Router();
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/revenue', function(req,res) {
     var sql = "SELECT transaction_year as YEAR, SUM(amount) as Revenue\n" +
-        "FROM sql3263617.user_transactions\n" +
+        "FROM user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
@@ -35,7 +35,7 @@ router.get('/revenue', function(req,res) {
 
 router.get('/activeusers', function(req, res) {
     var sql = "SELECT distinct transaction_year as Year, count(user_id) as activeusers\n" +
-        "FROM sql3263617.user_transactions\n" +
+        "FROM user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
@@ -47,7 +47,7 @@ router.get('/activeusers', function(req, res) {
 });
 
 router.get('/newusercount', function(req, res) {
-    var sql = "SELECT distinct joining_year as Year, count(user_id) as newusers FROM sql3263617.user_transactions GROUP BY joining_year";
+    var sql = "SELECT distinct joining_year as Year, count(user_id) as newusers FROM user_transactions GROUP BY joining_year";
 
     conn.query(sql, function (err, result) {
         if(err) throw err;
