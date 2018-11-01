@@ -58,7 +58,7 @@ router.get('/newusercount', function(req, res) {
 
 router.get('/arpau', function(req, res) {
     var sql = "SELECT transaction_year as Year,\n" +
-        "       SUM(amount)/COUNT(distinct user_id) Average Revenue\n" +
+        "       SUM(amount)/COUNT(distinct user_id) Revenue\n" +
         "FROM\n" +
         "    user_transactions\n" +
         "GROUP BY Year;"
