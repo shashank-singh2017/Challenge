@@ -17,6 +17,11 @@ var MyData = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+
+    setInterval(function () {
+        conn.query('SELECT 1');
+    }, 5000);
+
 });
 
 
