@@ -28,8 +28,6 @@ router.get('/revenue', function(req,res) {
 
     conn.query(sql, function (err, result) {
         if(err) throw err;
-
-        console.log(result[0].total);
         res.send(result);
     })
 });
@@ -42,7 +40,6 @@ router.get('/activeusers', function(req, res) {
     conn.query(sql, function (err, result) {
         if(err) throw err;
 
-        console.log(result[0].activeUsers);
         res.send(result);
     })
 });
