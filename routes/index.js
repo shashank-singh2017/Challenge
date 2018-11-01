@@ -76,7 +76,6 @@ router.post('/processData', function(req,res) {
 
     csvdata.load(__dirname+'/'+req.body.inputFile).then((data) => {
 
-        //console.log(data);
 
         for(var i=0;i<data.length;i++) {
             var parsedData = data[i]['user\ttransaction date\tsales amount\tjoin date\tregion'].split(/\s+/);
