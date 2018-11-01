@@ -81,10 +81,6 @@ router.post('/processData', function(req,res) {
         for(var i=0;i<data.length;i++) {
             var parsedData = data[i]['user\ttransaction date\tsales amount\tjoin date\tregion'].split(/\s+/);
 
-            //insert data into mysql db
-
-          //  console.log(parsedData[0] + " " + parsedData[1] + " " + parsedData[2] + " " + parsedData[3] + " " + parsedData[4]);
-
             var user_id = parsedData[0];
             var transaction_date = parsedData[1];
             var amount = parsedData[2];
