@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/revenue', function(req,res) {
     var sql = "SELECT transaction_year as YEAR, SUM(amount) as Revenue\n" +
-        "FROM user_transactions\n" +
+        "FROM challenge.user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
