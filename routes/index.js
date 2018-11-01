@@ -7,7 +7,8 @@ var conn  = mysql.createConnection({
     host            : 'amz.cp7r60n8f0a7.us-west-1.rds.amazonaws.com',
     user            : 'root',
     password        : 'August_123',
-    database        : 'challenge'
+    database        : 'challenge',
+    timeout         : 60000
 });
 
 var router = express.Router();
