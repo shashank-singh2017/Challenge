@@ -4,7 +4,7 @@ const csvdata = require('csvdata');
 var mysql = require('mysql');
 
 var conn  = mysql.createConnection({
-    host            : '71.198.194.36',
+    host            : '35.232.12.175',
     user            : 'root',
     password        : 'root',
     database        : 'challenge'
