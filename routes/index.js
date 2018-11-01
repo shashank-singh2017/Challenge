@@ -57,11 +57,11 @@ router.get('/newusercount', function(req, res) {
 });
 
 router.get('/arpau', function(req, res) {
-    var sql = "SELECT user_id as user,\n" +
-        "       SUM(amount) amount\n" +
+    var sql = "SELECT transaction_year as Year,\n" +
+        "       SUM(amount)/COUNT(distinct user_id)\n" +
         "FROM\n" +
         "    user_transactions\n" +
-        "GROUP BY user;"
+        "GROUP BY Year;"
 
     conn.query(sql, function (err, result) {
         if(err) throw err;
