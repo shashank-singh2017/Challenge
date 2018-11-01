@@ -4,10 +4,10 @@ const csvdata = require('csvdata');
 var mysql = require('mysql');
 
 var conn  = mysql.createConnection({
-    host            : 'us-cdbr-iron-east-01.cleardb.net',
-    user            : 'becd00e6998b8b',
-    password        : '735f487f',
-    database        : 'heroku_3d47a1071aacd4a'
+    host            : '35.232.12.175',
+    user            : 'root',
+    password        : 'root',
+    database        : 'challenge'
 });
 
 var router = express.Router();
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/revenue', function(req,res) {
     var sql = "SELECT transaction_year as YEAR, SUM(amount) as Revenue\n" +
-        "FROM heroku_3d47a1071aacd4a.user_transactions\n" +
+        "FROM user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
@@ -33,7 +33,7 @@ router.get('/revenue', function(req,res) {
 
 router.get('/activeusers', function(req, res) {
     var sql = "SELECT distinct transaction_year as Year, count(user_id) as activeusers\n" +
-        "FROM heroku_3d47a1071aacd4a.user_transactions\n" +
+        "FROM user_transactions\n" +
         "GROUP BY transaction_year";
 
     conn.query(sql, function (err, result) {
@@ -44,7 +44,7 @@ router.get('/activeusers', function(req, res) {
 });
 
 router.get('/newusercount', function(req, res) {
-    var sql = "SELECT distinct joining_year as Year, count(user_id) as newusers FROM heroku_3d47a1071aacd4a.user_transactions GROUP BY joining_year";
+    var sql = "SELECT distinct joining_year as Year, count(user_id) as newusers FROM user_transactions GROUP BY joining_year";
 
     conn.query(sql, function (err, result) {
         if(err) throw err;
@@ -57,7 +57,7 @@ router.get('/arpau', function(req, res) {
     var sql = "SELECT transaction_year as Year,\n" +
         "       SUM(amount)/COUNT(distinct user_id) Revenue\n" +
         "FROM\n" +
-        "heroku_3d47a1071aacd4a.user_transactions\n" +
+        "user_transactions\n" +
         "GROUP BY Year;"
 
     conn.query(sql, function (err, result) {
@@ -110,7 +110,7 @@ router.post('/processData', function(req,res) {
 
        console.log(MyData.length);
 
-       var sql ="INSERT INTO heroku_3d47a1071aacd4a.user_transactions(user_id,joining_month,transaction_month,amount,region,joining_day,joining_year,transaction_day,transaction_year) VALUES ?";
+       var sql ="INSERT INTO user_transactions(user_id,joining_month,transaction_month,amount,region,joining_day,joining_year,transaction_day,transaction_year) VALUES ?";
 
        conn.query(sql, [MyData], function(err) {
           if(err) throw err;
